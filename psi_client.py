@@ -168,7 +168,7 @@ def connect_to_server(data, relay, bind_all, test=False):
     assert relay in ['SSH', 'OSSH']
 
     server = Psiphon3Server(data.servers(), data.propagation_channel_id(), data.sponsor_id(), CLIENT_VERSION, CLIENT_PLATFORM)
-
+    
     if server.relay_not_supported(relay):
         raise Exception('Server does not support %s' % relay)
         print (server.ip_address)
@@ -178,7 +178,7 @@ def connect_to_server(data, relay, bind_all, test=False):
     if not server.can_attempt_relay_before_handshake(relay):
         handshake_response = do_handshake(server, data, relay)
         handshake_performed = True
-
+    
     ssh_connection = make_ssh_connection(server, relay, bind_all)
     ssh_connection.test_connection()
 
@@ -328,11 +328,14 @@ def showall(reg="ANY"):
             for ser in data['servers']:
                 loc = ser.find('{"webServerCertificate":'.encode('hex'))
                 ob=json.loads(ser[loc:].decode('hex'))
+                
+                #print ob
                 if((ob['region']!=reg and reg!="ANY") or (ossh_glob == False and (("OSSH" not in ob["capabilities"]) or (ob["sshObfuscatedPort"] != 53)) ) ):
                     continue
                 regions.add(ob['region'])
                 i=i+1
-                print (str(i) +"\t"+ ob['ipAddress'] + "\t" + ob['region'] +"\t" + str("OSSH" in ob['capabilities']) +"\t"+ str(ob["sshObfuscatedPort"] == 53))
+                if ob['sshObfuscatedPort'] == 443:
+                    print (str(i) +"\t"+ ob['ipAddress'] + "\t" + ob['region'] +"\t" + str("OSSH" in ob['capabilities']) +"\t"+ str(ob["sshObfuscatedPort"] == 53))
             
             print regions
     except (IOError, ValueError, KeyError, IndexError, TypeError) as error:

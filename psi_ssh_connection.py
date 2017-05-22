@@ -56,6 +56,9 @@ class SSHConnection(object):
         return cmd_line
 
     def connect(self):
+        if self.port != 443:
+            print 'DEBUG', 'Unsupported port', self.port
+            raise 'Unsupported port'
         self.ssh = pexpect.spawn(self.command_line())
         # Print ssh output:
         #self.ssh.logfile_read = sys.stdout
