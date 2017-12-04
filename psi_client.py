@@ -329,7 +329,7 @@ def showall(reg="ANY"):
                 loc = ser.find('{"webServerCertificate":'.encode('hex'))
                 ob=json.loads(ser[loc:].decode('hex'))
                 
-                #print ob
+                
                 if((ob['region']!=reg and reg!="ANY") or (ossh_glob == False and (("OSSH" not in ob["capabilities"]) or (ob["sshObfuscatedPort"] != 53)) ) ):
                     continue
                 regions.add(ob['region'])

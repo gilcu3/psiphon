@@ -1,0 +1,4 @@
+*.pyc
+/server_list
+/servers.dat
+/ssh

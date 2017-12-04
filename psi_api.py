@@ -113,7 +113,7 @@ class Psiphon3Server(object):
         request_url = (self._common_request_url(relay_protocol) % ('handshake',) + '&' +
                        '&'.join(['known_server=%s' % (binascii.unhexlify(server).split(" ")[0],) for server in self.servers]))
         response = self.opener.open(request_url).read()
-        print response
+        print 'DEBUG', response
         self.handshake_response = {'Upgrade': '',
                                    'SSHPort': '',
                                    'SSHUsername': '',
