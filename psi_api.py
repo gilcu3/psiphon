@@ -24,7 +24,7 @@ import httplib
 import ssl
 import binascii
 import json
-sys.path.insert(0, 'SocksiPy')
+sys.path.insert(0, 'PySocks')
 import socks
 import socket
 socket.socket = socks.socksocket

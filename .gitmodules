@@ -1,0 +1,3 @@
+[submodule "PySocks"]
+	path = PySocks
+	url = https://github.com/Anorov/PySocks
