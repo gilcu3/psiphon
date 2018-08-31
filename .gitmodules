@@ -1,3 +1,9 @@
 [submodule "PySocks"]
 	path = PySocks
 	url = https://github.com/Anorov/PySocks
+[submodule "openssh-portable"]
+	path = openssh-portable
+	url = https://github.com/openssh/openssh-portable
+[submodule "obfuscated-openssh-patches"]
+	path = obfuscated-openssh-patches
+	url = https://github.com/zinglau/obfuscated-openssh-patches

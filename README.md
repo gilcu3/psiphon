@@ -29,24 +29,32 @@ A step by step guide :
 
 - ##### Creating ssh binary
 
-    However an ssh binary is provided for ubuntu 14.04, it is highly recommended to compile your ssh binary to remove compatibility issues. 
+    However an ssh binary is usually provided by the distribution, it is highly recommended to compile your ssh binary to remove compatibility issues. 
     
     ```sh
-    psiphon$ cd openssh-5.9p1
-    openssh-5.9p1$ ./configure
+    psiphon$ cd openssh-portable
+    ```
+    Apply the proper path as required, for example
+    
+    ```sh
+    openssh-portable$ patch -p1 -i ../obfuscated-openssh-patches/7.8.diff
+    ```
+    
+    Configure
+    ```sh
+    openssh-portable$ ./configure
     ```
     
     Install the required dependencies if error occurs.
     Use make command after successful verification of dependencies.
     ```sh
-    openssh-5.9p1$ make
+    openssh-portable$ make
     ```
     A ssh binary will be created on successful completion of make command.
     After removing existing binary file, copy the new binary to main psiphon folder.
     ```sh
-    openssh-5.9p1$ cd ..
-    psiphon$ rm ssh
-    psiphon$ cp openssh-5.9p1/ssh .
+    openssh-portable$ cd ..
+    psiphon$ cp openssh-portable/ssh .
     ```
     Your binary is ready for running.
     
