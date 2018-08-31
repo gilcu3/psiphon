@@ -42,6 +42,7 @@ A step by step guide :
     
     Configure
     ```sh
+    openssh-portable$ autoreconf
     openssh-portable$ ./configure
     ```
     
