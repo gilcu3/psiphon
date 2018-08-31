@@ -34,7 +34,7 @@ A step by step guide :
     ```sh
     psiphon$ cd openssh-portable
     ```
-    Apply the proper path as required, for example
+    Apply the proper patch as required, for example (current version 7.8):
     
     ```sh
     openssh-portable$ patch -p1 -i ../obfuscated-openssh-patches/7.8.diff
